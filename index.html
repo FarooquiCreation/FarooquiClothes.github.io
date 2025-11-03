@@ -1,553 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farooqui - Complete Ethnic Wear Catalog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        body {
-            background-color: #000;
-            color: #d4af37;
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
-            background-size: 50px 50px;
-        }
+    body {
+        background-color: #000;
+        color: #d4af37;
+        line-height: 1.6;
+        background-image:
+            radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+        background-size: 50px 50px;
+    }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgba(17, 17, 17, 0.95);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(17, 17, 17, 0.95);
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
 
-        .container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.02) 50%, transparent 100%),
-                repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(212, 175, 55, 0.02) 5px, rgba(212, 175, 55, 0.02) 10px);
-            pointer-events: none;
-            z-index: 0;
-        }
+    .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.02) 50%, transparent 100%),
+            repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(212, 175, 55, 0.02) 5px, rgba(212, 175, 55, 0.02) 10px);
+        pointer-events: none;
+        z-index: 0;
+    }
 
-        header {
-            background: linear-gradient(135deg, #000, #1a1a1a);
-            color: #d4af37;
-            padding: 30px 0;
-            text-align: center;
-            border-radius: 0 0 10px 10px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #d4af37;
-            position: relative;
-            z-index: 1;
-        }
+    header {
+        background: linear-gradient(135deg, #000, #1a1a1a);
+        color: #d4af37;
+        padding: 30px 0;
+        text-align: center;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #d4af37;
+        position: relative;
+        z-index: 1;
+    }
 
-        .logo {
-            font-size: 2.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
-        }
+    .logo {
+        font-size: 2.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+    }
 
-        .tagline {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            color: #f0e6d2;
-        }
+    .tagline {
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-bottom: 20px;
+        color: #f0e6d2;
+    }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
-            color: #f0e6d2;
-        }
+    .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+        color: #f0e6d2;
+    }
 
-        .catalog-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            position: relative;
-            z-index: 1;
-        }
+    .catalog-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        position: relative;
+        z-index: 1;
+    }
 
-        .category {
-            margin-bottom: 40px;
-            page-break-inside: avoid;
-        }
+    .category {
+        margin-bottom: 40px;
+        page-break-inside: avoid;
+    }
 
-        .category-header {
-            background-color: #000;
-            color: #d4af37;
-            padding: 15px 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border: 1px solid #d4af37;
-            position: relative;
-            z-index: 1;
-        }
+    .category-header {
+        background-color: #000;
+        color: #d4af37;
+        padding: 15px 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid #d4af37;
+        position: relative;
+        z-index: 1;
+    }
 
-        .category-header i {
-            font-size: 1.5rem;
-        }
+    .category-header i {
+        font-size: 1.5rem;
+    }
 
-        .category-header h2 {
-            font-size: 1.8rem;
-        }
+    .category-header h2 {
+        font-size: 1.8rem;
+    }
 
-        .products {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+    .products {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
 
+    .product {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        border: 1px solid #333;
+        border-radius: 8px;
+        background-color: rgba(26, 26, 26, 0.7);
+        box-shadow: 0 3px 15px rgba(212, 175, 55, 0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+    .product-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .slider-container {
+        position: relative;
+        height: 700px;
+        /* A4-like height */
+        overflow: hidden;
+        background-color: #000;
+        border: 2px solid #d4af37;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    }
+
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 100%;
+    }
+
+    .slider img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        /* Changed to contain for better product display */
+        flex-shrink: 0;
+        background-color: #000;
+        cursor: zoom-in;
+    }
+
+    /* Updated Responsive Design Number */
+    .design-number {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #d4af37;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 5px;
+        z-index: 10;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        border: 1px solid #d4af37;
+    }
+
+    .slider-nav {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(212, 175, 55, 0.5);
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .slider-dot.active {
+        background-color: #d4af37;
+    }
+
+    .slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(212, 175, 55, 0.8);
+        color: #000;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-weight: bold;
+        z-index: 10;
+    }
+
+    .slider-arrow:hover {
+        background-color: rgba(212, 175, 55, 1);
+    }
+
+    .slider-arrow.prev {
+        left: 15px;
+    }
+
+    .slider-arrow.next {
+        right: 15px;
+    }
+
+    /* Zoom Controls */
+    .zoom-controls {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+
+    .zoom-btn {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #d4af37;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid #d4af37;
+        transition: all 0.3s;
+    }
+
+    .zoom-btn:hover {
+        background-color: rgba(212, 175, 55, 0.2);
+    }
+
+    /* Zoom Modal */
+    .zoom-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .zoom-modal.active {
+        display: flex;
+    }
+
+    .zoom-image-container {
+        max-width: 90%;
+        max-height: 80%;
+        position: relative;
+        overflow: auto;
+        border: 2px solid #d4af37;
+        border-radius: 5px;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .zoom-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .zoom-controls-modal {
+        position: absolute;
+        bottom: 20px;
+        display: flex;
+        gap: 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        border-radius: 30px;
+        border: 1px solid #d4af37;
+    }
+
+    .modal-zoom-btn {
+        background-color: transparent;
+        color: #d4af37;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid #d4af37;
+        transition: all 0.3s;
+        font-size: 1.2rem;
+    }
+
+    .modal-zoom-btn:hover {
+        background-color: rgba(212, 175, 55, 0.2);
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #d4af37;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px solid #d4af37;
+        transition: all 0.3s;
+        font-size: 1.5rem;
+        z-index: 1001;
+    }
+
+    .close-modal:hover {
+        background-color: rgba(212, 175, 55, 0.2);
+    }
+
+    .zoom-info {
+        color: #d4af37;
+        margin-top: 15px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #d4af37;
+    }
+
+    footer {
+        margin-top: 50px;
+        padding: 30px 0;
+        background: linear-gradient(135deg, #000, #1a1a1a);
+        color: #d4af37;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+        border-top: 2px solid #d4af37;
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 20px;
+    }
+
+    .footer-section {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .social-icons a {
+        color: #d4af37;
+        font-size: 1.5rem;
+        transition: transform 0.3s;
+    }
+
+    .social-icons a:hover {
+        transform: translateY(-5px);
+    }
+
+    .copyright {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        font-size: 0.9rem;
+    }
+
+    /* Updated Filter Styles */
+    .sticky-filter {
+        position: sticky;
+        top: 0;
+        background: linear-gradient(135deg, #000, #1a1a1a);
+        border-bottom: 2px solid #d4af37;
+        z-index: 100;
+        padding: 15px 0;
+        margin-bottom: 30px;
+    }
+
+    .filter-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .filter-main-btn {
+        background: rgba(0, 0, 0, 0.7);
+        color: #d4af37;
+        border: 1px solid #d4af37;
+        padding: 12px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filter-main-btn:hover {
+        background: rgba(212, 175, 55, 0.2);
+        transform: translateY(-2px);
+    }
+
+    /* Filter Modal */
+    .filter-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .filter-modal.active {
+        display: flex;
+    }
+
+    .filter-modal-content {
+        background: linear-gradient(135deg, #000, #1a1a1a);
+        border: 2px solid #d4af37;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 600px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .filter-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #d4af37;
+    }
+
+    .filter-modal-header h2 {
+        color: #d4af37;
+        font-size: 1.5rem;
+    }
+
+    .close-filter-modal {
+        background: none;
+        border: none;
+        color: #d4af37;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+        transition: all 0.3s;
+    }
+
+    .close-filter-modal:hover {
+        color: #f0e6d2;
+        transform: scale(1.1);
+    }
+
+    .filter-categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .filter-category-btn {
+        background: rgba(0, 0, 0, 0.7);
+        color: #d4af37;
+        border: 1px solid #d4af37;
+        padding: 15px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .filter-category-btn:hover {
+        background: rgba(212, 175, 55, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .filter-category-btn.active {
+        background: #d4af37;
+        color: #000;
+        font-weight: bold;
+    }
+
+    /* Responsive Design Number Sizes */
+    @media (max-width: 1024px) {
+        .slider-container {
+            height: 600px;
+        }
+        .design-number {
+            font-size: 1.4rem;
+            padding: 7px 14px;
+        }
+    }
+
+    @media (max-width: 768px) {
         .product {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            background-color: rgba(26, 26, 26, 0.7);
-            box-shadow: 0 3px 15px rgba(212, 175, 55, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .product-image {
-            position: relative;
-            overflow: hidden;
-            border-radius: 5px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            width: 100%;
+            padding: 15px;
         }
 
         .slider-container {
-            position: relative;
-            height: 700px; /* A4-like height */
-            overflow: hidden;
-            background-color: #000;
-            border: 2px solid #d4af37;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            height: 500px;
         }
 
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-
-        .slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Changed to contain for better product display */
-            flex-shrink: 0;
-            background-color: #000;
-            cursor: zoom-in;
+        .contact-info {
+            flex-direction: column;
+            gap: 10px;
         }
 
         .design-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #d4af37;
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 10;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            border: 1px solid #d4af37;
-        }
-
-        .slider-nav {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            z-index: 10;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(212, 175, 55, 0.5);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .slider-dot.active {
-            background-color: #d4af37;
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(212, 175, 55, 0.8);
-            color: #000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-weight: bold;
-            z-index: 10;
-        }
-
-        .slider-arrow:hover {
-            background-color: rgba(212, 175, 55, 1);
-        }
-
-        .slider-arrow.prev {
+            font-size: 1.2rem;
+            padding: 6px 12px;
+            top: 15px;
             left: 15px;
         }
 
-        .slider-arrow.next {
-            right: 15px;
-        }
-
-        /* Zoom Controls */
         .zoom-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            z-index: 10;
+            top: 10px;
+            right: 10px;
         }
 
         .zoom-btn {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #d4af37;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 1px solid #d4af37;
-            transition: all 0.3s;
+            width: 35px;
+            height: 35px;
         }
 
-        .zoom-btn:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-        }
-
-        /* Zoom Modal */
-        .zoom-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .zoom-modal.active {
-            display: flex;
-        }
-
-        .zoom-image-container {
-            max-width: 90%;
-            max-height: 80%;
-            position: relative;
-            overflow: auto;
-            border: 2px solid #d4af37;
-            border-radius: 5px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .zoom-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .zoom-controls-modal {
-            position: absolute;
-            bottom: 20px;
-            display: flex;
-            gap: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 30px;
-            border: 1px solid #d4af37;
-        }
-
-        .modal-zoom-btn {
-            background-color: transparent;
-            color: #d4af37;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 1px solid #d4af37;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-
-        .modal-zoom-btn:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #d4af37;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 1px solid #d4af37;
-            transition: all 0.3s;
-            font-size: 1.5rem;
-            z-index: 1001;
-        }
-
-        .close-modal:hover {
-            background-color: rgba(212, 175, 55, 0.2);
-        }
-
-        .zoom-info {
-            color: #d4af37;
-            margin-top: 15px;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: 1px solid #d4af37;
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 30px 0;
-            background: linear-gradient(135deg, #000, #1a1a1a);
-            color: #d4af37;
-            text-align: center;
-            border-radius: 10px 10px 0 0;
-            border-top: 2px solid #d4af37;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-icons a {
-            color: #d4af37;
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-        }
-
-        .social-icons a:hover {
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        .filter-main-btn {
+            padding: 10px 25px;
             font-size: 0.9rem;
+        }
+
+        .filter-modal-content {
+            padding: 20px;
+        }
+
+        .filter-categories-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .slider-container {
+            height: 400px;
+        }
+
+        .design-number {
+            font-size: 1rem;
+            padding: 5px 10px;
+            top: 10px;
+            left: 10px;
+        }
+
+        .zoom-controls {
+            flex-direction: column;
+            gap: 5px;
         }
 
         .sticky-filter {
-            position: sticky;
-            top: 0;
-            background: linear-gradient(135deg, #000, #1a1a1a);
-            border-bottom: 2px solid #d4af37;
-            z-index: 100;
-            padding: 15px 0;
-            margin-bottom: 30px;
+            padding: 10px 0;
         }
 
-        .filter-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            scrollbar-color: #d4af37 #000;
+        .filter-main-btn {
+            padding: 8px 20px;
+            font-size: 0.8rem;
         }
 
-        .filter-container::-webkit-scrollbar {
-            height: 6px;
+        .filter-modal-content {
+            padding: 15px;
         }
 
-        .filter-container::-webkit-scrollbar-track {
-            background: #000;
+        .filter-modal-header h2 {
+            font-size: 1.3rem;
         }
 
-        .filter-container::-webkit-scrollbar-thumb {
-            background: #d4af37;
-            border-radius: 3px;
+        .filter-category-btn {
+            padding: 12px 15px;
+            font-size: 0.8rem;
         }
-
-        .filter-btn {
-            background: rgba(0, 0, 0, 0.7);
-            color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
-            background: #d4af37;
-            color: #000;
-            font-weight: bold;
-        }
-
-        @media (max-width: 1024px) {
-            .slider-container {
-                height: 600px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product {
-                padding: 15px;
-            }
-            
-            .slider-container {
-                height: 500px;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .design-number {
-                font-size: 1.8rem;
-            }
-            
-            .zoom-controls {
-                top: 10px;
-                right: 10px;
-            }
-            
-            .zoom-btn {
-                width: 35px;
-                height: 35px;
-            }
-            
-            .filter-container {
-                gap: 8px;
-                padding: 0 15px;
-            }
-            
-            .filter-btn {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slider-container {
-                height: 400px;
-            }
-            
-            .design-number {
-                font-size: 1.5rem;
-                padding: 8px 15px;
-            }
-            
-            .zoom-controls {
-                flex-direction: column;
-                gap: 5px;
-            }
-            
-            .sticky-filter {
-                padding: 10px 0;
-            }
-            
-            .filter-btn {
-                padding: 6px 12px;
-                font-size: 0.75rem;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -560,22 +662,45 @@
             </div>
         </header>
 
-        <!-- Sticky Filter -->
+        <!-- Updated Sticky Filter -->
         <div class="sticky-filter">
             <div class="filter-container">
-                <button class="filter-btn active" data-category="all">All Collections</button>
-                <button class="filter-btn" data-category="sherwani-farma">Sherwani: Farma</button>
-                <button class="filter-btn" data-category="sherwani-velvet">Sherwani: Velvet</button>
-                <button class="filter-btn" data-category="sherwani-georgette">Sherwani: Georgette</button>
-                <button class="filter-btn" data-category="sherwani-diverse-fabric">Sherwani: Diverse Fabric</button>
-                <button class="filter-btn" data-category="open-indo-georgette">Open Indo: Georgette</button>
-                <button class="filter-btn" data-category="open-indo-diverse-fabric">Open Indo: Diverse Fabric</button>
-                <button class="filter-btn" data-category="semi-indo-diverse-fabric">Semi Indo: Diverse Fabric</button>
-                <button class="filter-btn" data-category="indo-western-diverse-fabric">Indo Western: Diverse Fabric</button>
-                <button class="filter-btn" data-category="jodhpuri-diverse-fabric">Jodhpuri</button>
-                <button class="filter-btn" data-category="kurta-jacket">Kurta Jacket</button>
-                <button class="filter-btn" data-category="kurta-chicken">Kurta: Chicken</button>
-                <button class="filter-btn" data-category="kurta-pintex">Kurta: Pintex</button>
+                <button class="filter-main-btn" id="openFilterModal">
+                    <i class="fas fa-filter"></i>
+                    Filter Products
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Modal -->
+        <div class="filter-modal" id="filterModal">
+            <div class="filter-modal-content">
+                <div class="filter-modal-header">
+                    <h2>Filter by Category</h2>
+                    <button class="close-filter-modal" id="closeFilterModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="filter-categories-grid">
+                    <button class="filter-category-btn active" data-category="all">All Collections</button>
+                    <button class="filter-category-btn" data-category="sherwani-farma">Sherwani: Farma</button>
+                    <button class="filter-category-btn" data-category="sherwani-velvet">Sherwani: Velvet</button>
+                    <button class="filter-category-btn" data-category="sherwani-georgette">Sherwani: Georgette</button>
+                    <button class="filter-category-btn" data-category="sherwani-diverse-fabric">Sherwani: Diverse
+                        Fabric</button>
+                    <button class="filter-category-btn" data-category="open-indo-georgette">Open Indo:
+                        Georgette</button>
+                    <button class="filter-category-btn" data-category="open-indo-diverse-fabric">Open Indo: Diverse
+                        Fabric</button>
+                    <button class="filter-category-btn" data-category="semi-indo-diverse-fabric">Semi Indo: Diverse
+                        Fabric</button>
+                    <button class="filter-category-btn" data-category="indo-western-diverse-fabric">Indo Western:
+                        Diverse Fabric</button>
+                    <button class="filter-category-btn" data-category="jodhpuri-diverse-fabric">Jodhpuri</button>
+                    <button class="filter-category-btn" data-category="kurta-jacket">Kurta Jacket</button>
+                    <button class="filter-category-btn" data-category="kurta-chicken">Kurta: Chicken</button>
+                    <button class="filter-category-btn" data-category="kurta-pintex">Kurta: Pintex</button>
+                </div>
             </div>
         </div>
 
@@ -1580,9 +1705,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25001\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25001\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25001\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25001\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25001\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25001\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1603,9 +1731,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25002\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25002\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25002\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25002\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25002\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25002\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1626,9 +1757,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25003\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25003\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25003\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25003\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25003\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25003\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1649,9 +1783,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25004\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25004\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25004\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25004\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25004\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25004\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1672,9 +1809,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25005\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25005\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25005\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25005\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25005\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25005\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1695,9 +1835,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25006\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25006\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25006\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25006\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25006\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25006\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1718,9 +1861,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25007\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25007\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25007\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25007\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25007\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25007\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1741,9 +1887,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25017\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25017\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25017\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25017\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25017\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1764,9 +1912,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25018\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25018\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25018\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25018\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25018\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1843,9 +1993,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25009\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25009\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25009\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25009\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25009\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25009\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1866,9 +2019,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25010\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Open Indo Western\OI25010\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Open Indo Western\OI25010\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25010\Front.jpg"
+                                        alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25010\Back.jpg"
+                                        alt="Royal Farma Sherwani Back">
+                                    <img src="Collections\Open Indo Western\OI25010\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1889,9 +2045,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25011\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25011\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25011\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25011\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25011\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1912,9 +2070,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25012\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25012\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25012\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25012\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25012\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1935,9 +2095,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25013\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25013\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25013\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25013\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25013\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1958,9 +2120,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25014\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25014\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25014\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25014\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25014\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1981,9 +2145,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25015\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25015\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25015\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25015\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25015\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2004,9 +2170,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Open Indo Western\OI25016\Front.jpg" alt="Royal Farma Sherwani">
+                                    <img src="Collections\Open Indo Western\OI25016\Front.jpg"
+                                        alt="Royal Farma Sherwani">
                                     <!-- <img src="Collections\Open Indo Western\OI25016\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Open Indo Western\OI25016\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Open Indo Western\OI25016\Zoom.jpg"
+                                        alt="Royal Farma Sherwani Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2037,8 +2205,10 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Semi Indo Western\SI25001\Front.jpg" alt="Semi Indo Diverse Fabric">
-                                    <img src="Collections\Semi Indo Western\SI25001\Back.jpg" alt="Semi Indo Diverse Fabric Back">
+                                    <img src="Collections\Semi Indo Western\SI25001\Front.jpg"
+                                        alt="Semi Indo Diverse Fabric">
+                                    <img src="Collections\Semi Indo Western\SI25001\Back.jpg"
+                                        alt="Semi Indo Diverse Fabric Back">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2069,9 +2239,11 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Indo Western\IW25001\Front.jpg" alt="Indo Western Diverse Fabric">
+                                    <img src="Collections\Indo Western\IW25001\Front.jpg"
+                                        alt="Indo Western Diverse Fabric">
                                     <!-- <img src="Collections\Indo Western\IW25001\Back.jpg" alt="Indo Western Diverse Fabric Back"> -->
-                                    <img src="Collections\Indo Western\IW25001\Zoom.jpg" alt="Indo Western Diverse Fabric Zoom">
+                                    <img src="Collections\Indo Western\IW25001\Zoom.jpg"
+                                        alt="Indo Western Diverse Fabric Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2092,19 +2264,20 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Indo Western\IW25002\Front.jpg" alt="Indo Western Diverse Fabric">
+                                    <img src="Collections\Indo Western\IW25002\Front.jpg"
+                                        alt="Indo Western Diverse Fabric">
                                     <!-- <img src="Collections\Indo Western\IW25002\Back.jpg" alt="Indo Western Diverse Fabric Back"> -->
                                     <!-- <img src="Collections\Indo Western\IW25002\Zoom.jpg" alt="Indo Western Diverse Fabric Zoom">
                                 </div> -->
-                                <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
-                                <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
-                                <div class="slider-nav">
-                                    <div class="slider-dot active"></div>
-                                    <div class="slider-dot"></div>
+                                    <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+                                    <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+                                    <div class="slider-nav">
+                                        <div class="slider-dot active"></div>
+                                        <div class="slider-dot"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                     <div class="product">
                         <div class="product-image">
@@ -2116,9 +2289,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Indo Western\IW25003\Front.jpg" alt="Indo Western Diverse Fabric">
-                                    <img src="Collections\Indo Western\IW25003\Back.jpg" alt="Indo Western Diverse Fabric Back">
-                                    <img src="Collections\Indo Western\IW25003\Zoom.jpg" alt="Indo Western Diverse Fabric Zoom">
+                                    <img src="Collections\Indo Western\IW25003\Front.jpg"
+                                        alt="Indo Western Diverse Fabric">
+                                    <img src="Collections\Indo Western\IW25003\Back.jpg"
+                                        alt="Indo Western Diverse Fabric Back">
+                                    <img src="Collections\Indo Western\IW25003\Zoom.jpg"
+                                        alt="Indo Western Diverse Fabric Zoom">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2407,46 +2583,81 @@
     <script>
         // Store current slide for each slider
         const sliderStates = new Map();
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            // Category filter functionality
-            const filterButtons = document.querySelectorAll('.filter-btn');
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Filter Modal Elements
+            const filterModal = document.getElementById('filterModal');
+            const openFilterModal = document.getElementById('openFilterModal');
+            const closeFilterModal = document.getElementById('closeFilterModal');
+            const filterCategoryBtns = document.querySelectorAll('.filter-category-btn');
             const categories = document.querySelectorAll('.category');
-            
-            // Filter button click event
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
+
+            // Open Filter Modal
+            openFilterModal.addEventListener('click', function () {
+                filterModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close Filter Modal
+            closeFilterModal.addEventListener('click', function () {
+                filterModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside
+            filterModal.addEventListener('click', function (e) {
+                if (e.target === filterModal) {
+                    filterModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Filter category selection
+            filterCategoryBtns.forEach(button => {
+                button.addEventListener('click', function () {
                     const category = this.getAttribute('data-category');
-                    
-                    // Update active button
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Update active button in modal
+                    filterCategoryBtns.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    if (category === 'all') {
-                        // Show all categories
-                        categories.forEach(cat => {
-                            cat.style.display = 'block';
-                        });
-                        // Scroll to top
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else {
-                        // Filter categories
-                        categories.forEach(cat => {
-                            if (cat.getAttribute('data-category') === category) {
-                                cat.style.display = 'block';
-                                // Scroll to the category
-                                cat.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            } else {
-                                cat.style.display = 'none';
-                            }
-                        });
-                    }
+
+                    // Close modal
+                    filterModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+
+                    // Apply filter
+                    applyCategoryFilter(category);
                 });
             });
 
+            // Function to apply category filter
+            function applyCategoryFilter(category) {
+                if (category === 'all') {
+                    // Show all categories
+                    categories.forEach(cat => {
+                        cat.style.display = 'block';
+                    });
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // Filter categories
+                    categories.forEach(cat => {
+                        if (cat.getAttribute('data-category') === category) {
+                            cat.style.display = 'block';
+                            // Scroll to the category
+                            setTimeout(() => {
+                                cat.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 300);
+                        } else {
+                            cat.style.display = 'none';
+                        }
+                    });
+                }
+            }
+
             // Initialize all sliders
             const sliders = document.querySelectorAll('.slider-container');
-            
+
             sliders.forEach((container, index) => {
                 const sliderId = container.dataset.sliderId || index;
                 const slider = container.querySelector('.slider');
@@ -2454,35 +2665,35 @@
                 const dots = container.querySelectorAll('.slider-dot');
                 const prevBtn = container.querySelector('.slider-arrow.prev');
                 const nextBtn = container.querySelector('.slider-arrow.next');
-                
+
                 // Initialize slider state
                 sliderStates.set(sliderId, 0);
                 let currentSlide = 0;
                 const totalSlides = slides.length;
-                
+
                 // Function to update slider position
                 function updateSlider() {
                     slider.style.transform = `translateX(-${currentSlide * 100}%)`;
                     sliderStates.set(sliderId, currentSlide);
-                    
+
                     // Update dots
                     dots.forEach((dot, index) => {
                         dot.classList.toggle('active', index === currentSlide);
                     });
                 }
-                
+
                 // Next slide
                 nextBtn.addEventListener('click', () => {
                     currentSlide = (currentSlide + 1) % totalSlides;
                     updateSlider();
                 });
-                
+
                 // Previous slide
                 prevBtn.addEventListener('click', () => {
                     currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
                     updateSlider();
                 });
-                
+
                 // Dot navigation
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
@@ -2490,7 +2701,7 @@
                         updateSlider();
                     });
                 });
-                
+
                 // Auto slide (optional)
                 setInterval(() => {
                     currentSlide = (currentSlide + 1) % totalSlides;
@@ -2506,18 +2717,18 @@
             const zoomOutBtn = document.querySelector('.zoom-out');
             const zoomResetBtn = document.querySelector('.zoom-reset');
             const zoomBtns = document.querySelectorAll('.zoom-btn');
-            
+
             let currentZoom = 1;
-            
+
             // Open zoom modal
             zoomBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const sliderContainer = this.closest('.slider-container');
                     const sliderId = sliderContainer.dataset.sliderId;
                     const currentSlideIndex = sliderStates.get(sliderId) || 0;
                     const slider = sliderContainer.querySelector('.slider');
                     const slides = slider.querySelectorAll('img');
-                    
+
                     if (slides[currentSlideIndex]) {
                         zoomImage.src = slides[currentSlideIndex].src;
                         zoomModal.classList.add('active');
@@ -2527,17 +2738,17 @@
                     }
                 });
             });
-            
+
             // Close modal
-            closeModal.addEventListener('click', function() {
+            closeModal.addEventListener('click', function () {
                 zoomModal.classList.remove('active');
                 document.body.style.overflow = 'auto';
                 currentZoom = 1;
                 updateZoom();
             });
-            
+
             // Close modal when clicking outside the image
-            zoomModal.addEventListener('click', function(e) {
+            zoomModal.addEventListener('click', function (e) {
                 if (e.target === zoomModal) {
                     zoomModal.classList.remove('active');
                     document.body.style.overflow = 'auto';
@@ -2545,32 +2756,32 @@
                     updateZoom();
                 }
             });
-            
+
             // Zoom in
-            zoomInBtn.addEventListener('click', function() {
+            zoomInBtn.addEventListener('click', function () {
                 currentZoom = Math.min(currentZoom + 0.25, 3);
                 updateZoom();
             });
-            
+
             // Zoom out
-            zoomOutBtn.addEventListener('click', function() {
+            zoomOutBtn.addEventListener('click', function () {
                 currentZoom = Math.max(currentZoom - 0.25, 1);
                 updateZoom();
             });
-            
+
             // Reset zoom
-            zoomResetBtn.addEventListener('click', function() {
+            zoomResetBtn.addEventListener('click', function () {
                 currentZoom = 1;
                 updateZoom();
             });
-            
+
             // Update zoom level
             function updateZoom() {
                 zoomImage.style.transform = `scale(${currentZoom})`;
             }
-            
+
             // Mouse wheel zoom
-            zoomModal.addEventListener('wheel', function(e) {
+            zoomModal.addEventListener('wheel', function (e) {
                 e.preventDefault();
                 if (e.deltaY < 0) {
                     // Zoom in
@@ -2581,12 +2792,12 @@
                 }
                 updateZoom();
             });
-            
+
             // Keyboard controls
-            document.addEventListener('keydown', function(e) {
+            document.addEventListener('keydown', function (e) {
                 if (!zoomModal.classList.contains('active')) return;
-                
-                switch(e.key) {
+
+                switch (e.key) {
                     case 'Escape':
                         zoomModal.classList.remove('active');
                         document.body.style.overflow = 'auto';
@@ -2614,4 +2825,5 @@
         });
     </script>
 </body>
+
 </html>
