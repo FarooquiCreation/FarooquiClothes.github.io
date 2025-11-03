@@ -7,647 +7,578 @@
     <title>Farooqui - Complete Ethnic Wear Catalog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-        background-color: #000;
-        color: #d4af37;
-        line-height: 1.6;
-        background-image:
-            radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-            radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
-        background-size: 50px 50px;
-    }
-
-    .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: rgba(17, 17, 17, 0.95);
-        box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .container::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-            linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.02) 50%, transparent 100%),
-            repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(212, 175, 55, 0.02) 5px, rgba(212, 175, 55, 0.02) 10px);
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    header {
-        background: linear-gradient(135deg, #000, #1a1a1a);
-        color: #d4af37;
-        padding: 30px 0;
-        text-align: center;
-        border-radius: 0 0 10px 10px;
-        margin-bottom: 30px;
-        border-bottom: 2px solid #d4af37;
-        position: relative;
-        z-index: 1;
-    }
-
-    .logo {
-        font-size: 2.8rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
-    }
-
-    .tagline {
-        font-size: 1.2rem;
-        font-style: italic;
-        margin-bottom: 20px;
-        color: #f0e6d2;
-    }
-
-    .contact-info {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 15px;
-        font-size: 0.9rem;
-        flex-wrap: wrap;
-        color: #f0e6d2;
-    }
-
-    .catalog-container {
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        position: relative;
-        z-index: 1;
-    }
-
-    .category {
-        margin-bottom: 40px;
-        page-break-inside: avoid;
-    }
-
-    .category-header {
-        background-color: #000;
-        color: #d4af37;
-        padding: 15px 20px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        border: 1px solid #d4af37;
-        position: relative;
-        z-index: 1;
-    }
-
-    .category-header i {
-        font-size: 1.5rem;
-    }
-
-    .category-header h2 {
-        font-size: 1.8rem;
-    }
-
-    .products {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .product {
-        display: flex;
-        justify-content: center;
-        padding: 20px;
-        border: 1px solid #333;
-        border-radius: 8px;
-        background-color: rgba(26, 26, 26, 0.7);
-        box-shadow: 0 3px 15px rgba(212, 175, 55, 0.1);
-        position: relative;
-        z-index: 1;
-    }
-
-    .product-image {
-        position: relative;
-        overflow: hidden;
-        border-radius: 5px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-        max-width: 800px;
-        width: 100%;
-    }
-
-    .slider-container {
-        position: relative;
-        height: 700px;
-        /* A4-like height */
-        overflow: hidden;
-        background-color: #000;
-        border: 2px solid #d4af37;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    }
-
-    .slider {
-        display: flex;
-        transition: transform 0.5s ease;
-        height: 100%;
-    }
-
-    .slider img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        /* Changed to contain for better product display */
-        flex-shrink: 0;
-        background-color: #000;
-        cursor: zoom-in;
-    }
-
-    /* Updated Responsive Design Number */
-    .design-number {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #d4af37;
-        font-size: 1.5rem;
-        font-weight: bold;
-        padding: 8px 16px;
-        border-radius: 5px;
-        z-index: 10;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        border: 1px solid #d4af37;
-    }
-
-    .slider-nav {
-        position: absolute;
-        bottom: 15px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .slider-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: rgba(212, 175, 55, 0.5);
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .slider-dot.active {
-        background-color: #d4af37;
-    }
-
-    .slider-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(212, 175, 55, 0.8);
-        color: #000;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-weight: bold;
-        z-index: 10;
-    }
-
-    .slider-arrow:hover {
-        background-color: rgba(212, 175, 55, 1);
-    }
-
-    .slider-arrow.prev {
-        left: 15px;
-    }
-
-    .slider-arrow.next {
-        right: 15px;
-    }
-
-    /* Zoom Controls */
-    .zoom-controls {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        display: flex;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .zoom-btn {
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #d4af37;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: 1px solid #d4af37;
-        transition: all 0.3s;
-    }
-
-    .zoom-btn:hover {
-        background-color: rgba(212, 175, 55, 0.2);
-    }
-
-    /* Zoom Modal */
-    .zoom-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .zoom-modal.active {
-        display: flex;
-    }
-
-    .zoom-image-container {
-        max-width: 90%;
-        max-height: 80%;
-        position: relative;
-        overflow: auto;
-        border: 2px solid #d4af37;
-        border-radius: 5px;
-        box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-    }
-
-    .zoom-image {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.3s ease;
-    }
-
-    .zoom-controls-modal {
-        position: absolute;
-        bottom: 20px;
-        display: flex;
-        gap: 15px;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 10px 20px;
-        border-radius: 30px;
-        border: 1px solid #d4af37;
-    }
-
-    .modal-zoom-btn {
-        background-color: transparent;
-        color: #d4af37;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: 1px solid #d4af37;
-        transition: all 0.3s;
-        font-size: 1.2rem;
-    }
-
-    .modal-zoom-btn:hover {
-        background-color: rgba(212, 175, 55, 0.2);
-    }
-
-    .close-modal {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: #d4af37;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: 1px solid #d4af37;
-        transition: all 0.3s;
-        font-size: 1.5rem;
-        z-index: 1001;
-    }
-
-    .close-modal:hover {
-        background-color: rgba(212, 175, 55, 0.2);
-    }
-
-    .zoom-info {
-        color: #d4af37;
-        margin-top: 15px;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: 1px solid #d4af37;
-    }
-
-    footer {
-        margin-top: 50px;
-        padding: 30px 0;
-        background: linear-gradient(135deg, #000, #1a1a1a);
-        color: #d4af37;
-        text-align: center;
-        border-radius: 10px 10px 0 0;
-        border-top: 2px solid #d4af37;
-        position: relative;
-        z-index: 1;
-    }
-
-    .footer-content {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-bottom: 20px;
-    }
-
-    .footer-section {
-        flex: 1;
-        min-width: 250px;
-    }
-
-    .footer-section h3 {
-        margin-bottom: 15px;
-        font-size: 1.3rem;
-    }
-
-    .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin-top: 15px;
-    }
-
-    .social-icons a {
-        color: #d4af37;
-        font-size: 1.5rem;
-        transition: transform 0.3s;
-    }
-
-    .social-icons a:hover {
-        transform: translateY(-5px);
-    }
-
-    .copyright {
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(212, 175, 55, 0.2);
-        font-size: 0.9rem;
-    }
-
-    /* Updated Filter Styles */
-    .sticky-filter {
-        position: sticky;
-        top: 0;
-        background: linear-gradient(135deg, #000, #1a1a1a);
-        border-bottom: 2px solid #d4af37;
-        z-index: 100;
-        padding: 15px 0;
-        margin-bottom: 30px;
-    }
-
-    .filter-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .filter-main-btn {
-        background: rgba(0, 0, 0, 0.7);
-        color: #d4af37;
-        border: 1px solid #d4af37;
-        padding: 12px 30px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .filter-main-btn:hover {
-        background: rgba(212, 175, 55, 0.2);
-        transform: translateY(-2px);
-    }
-
-    /* Filter Modal */
-    .filter-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
-        z-index: 1000;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .filter-modal.active {
-        display: flex;
-    }
-
-    .filter-modal-content {
-        background: linear-gradient(135deg, #000, #1a1a1a);
-        border: 2px solid #d4af37;
-        border-radius: 10px;
-        padding: 30px;
-        max-width: 600px;
-        width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-        box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-    }
-
-    .filter-modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 25px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #d4af37;
-    }
-
-    .filter-modal-header h2 {
-        color: #d4af37;
-        font-size: 1.5rem;
-    }
-
-    .close-filter-modal {
-        background: none;
-        border: none;
-        color: #d4af37;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 5px;
-        transition: all 0.3s;
-    }
-
-    .close-filter-modal:hover {
-        color: #f0e6d2;
-        transform: scale(1.1);
-    }
-
-    .filter-categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
-
-    .filter-category-btn {
-        background: rgba(0, 0, 0, 0.7);
-        color: #d4af37;
-        border: 1px solid #d4af37;
-        padding: 15px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        text-align: center;
-    }
-
-    .filter-category-btn:hover {
-        background: rgba(212, 175, 55, 0.2);
-        transform: translateY(-2px);
-    }
-
-    .filter-category-btn.active {
-        background: #d4af37;
-        color: #000;
-        font-weight: bold;
-    }
-
-    /* Responsive Design Number Sizes */
-    @media (max-width: 1024px) {
-        .slider-container {
-            height: 600px;
-        }
-        .design-number {
-            font-size: 1.4rem;
-            padding: 7px 14px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .product {
-            padding: 15px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .slider-container {
-            height: 500px;
+        body {
+            background-color: #000;
+            color: #d4af37;
+            line-height: 1.6;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            background-size: 50px 50px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(17, 17, 17, 0.95);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.02) 50%, transparent 100%),
+                repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(212, 175, 55, 0.02) 5px, rgba(212, 175, 55, 0.02) 10px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #d4af37;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(212, 175, 55, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #f0e6d2;
         }
 
         .contact-info {
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .design-number {
-            font-size: 1.2rem;
-            padding: 6px 12px;
-            top: 15px;
-            left: 15px;
-        }
-
-        .zoom-controls {
-            top: 10px;
-            right: 10px;
-        }
-
-        .zoom-btn {
-            width: 35px;
-            height: 35px;
-        }
-
-        .filter-main-btn {
-            padding: 10px 25px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
             font-size: 0.9rem;
+            flex-wrap: wrap;
+            color: #f0e6d2;
         }
 
-        .filter-modal-content {
-            padding: 20px;
-        }
-
-        .filter-categories-grid {
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .slider-container {
-            height: 400px;
-        }
-
-        .design-number {
-            font-size: 1rem;
-            padding: 5px 10px;
-            top: 10px;
-            left: 10px;
-        }
-
-        .zoom-controls {
-            flex-direction: column;
-            gap: 5px;
-        }
-
+        /* Updated Filter Styles - Simple Button Layout */
         .sticky-filter {
-            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            border-bottom: 2px solid #d4af37;
+            z-index: 100;
+            padding: 15px 0;
+            margin-bottom: 30px;
         }
 
-        .filter-main-btn {
-            padding: 8px 20px;
-            font-size: 0.8rem;
-        }
-
-        .filter-modal-content {
-            padding: 15px;
-        }
-
-        .filter-modal-header h2 {
-            font-size: 1.3rem;
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
         .filter-category-btn {
-            padding: 12px 15px;
-            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            white-space: nowrap;
         }
-    }
-</style>
+
+        .filter-category-btn:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .filter-category-btn.active {
+            background: #d4af37;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .catalog-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category {
+            margin-bottom: 40px;
+            page-break-inside: avoid;
+        }
+
+        .category-header {
+            background-color: #000;
+            color: #d4af37;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-header i {
+            font-size: 1.5rem;
+        }
+
+        .category-header h2 {
+            font-size: 1.8rem;
+        }
+
+        .products {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .product {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: rgba(26, 26, 26, 0.7);
+            box-shadow: 0 3px 15px rgba(212, 175, 55, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .slider-container {
+            position: relative;
+            height: 700px;
+            overflow: hidden;
+            background-color: #000;
+            border: 2px solid #d4af37;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            flex-shrink: 0;
+            background-color: #000;
+            cursor: zoom-in;
+        }
+
+        .design-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            z-index: 10;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4af37;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(212, 175, 55, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider-dot.active {
+            background-color: #d4af37;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(212, 175, 55, 0.8);
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .slider-arrow:hover {
+            background-color: rgba(212, 175, 55, 1);
+        }
+
+        .slider-arrow.prev {
+            left: 15px;
+        }
+
+        .slider-arrow.next {
+            right: 15px;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .zoom-btn {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+        }
+
+        .zoom-btn:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .zoom-modal.active {
+            display: flex;
+        }
+
+        .zoom-image-container {
+            max-width: 90%;
+            max-height: 80%;
+            position: relative;
+            overflow: auto;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .zoom-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .zoom-controls-modal {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid #d4af37;
+        }
+
+        .modal-zoom-btn {
+            background-color: transparent;
+            color: #d4af37;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .modal-zoom-btn:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #d4af37;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid #d4af37;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .zoom-info {
+            color: #d4af37;
+            margin-top: 15px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #d4af37;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #d4af37;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            border-top: 2px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #d4af37;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Image Loading Styles */
+        .slider img[data-src] {
+            opacity: 0;
+        }
+
+        .slider img.loaded {
+            opacity: 1;
+        }
+
+        .slider-container::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            display: none;
+        }
+
+        .slider-container.loading::after {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .slider-container {
+                height: 600px;
+            }
+
+            .design-number {
+                font-size: 1.4rem;
+                padding: 7px 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                padding: 15px;
+            }
+
+            .slider-container {
+                height: 500px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .design-number {
+                font-size: 1.2rem;
+                padding: 6px 12px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .zoom-controls {
+                top: 10px;
+                right: 10px;
+            }
+
+            .zoom-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .filter-category-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container {
+                height: 400px;
+            }
+
+            .design-number {
+                font-size: 1rem;
+                padding: 5px 10px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .zoom-controls {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .sticky-filter {
+                padding: 10px 0;
+            }
+
+            .filter-category-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -662,45 +593,26 @@
             </div>
         </header>
 
-        <!-- Updated Sticky Filter -->
+        <!-- Updated Filter - Simple Button Layout -->
         <div class="sticky-filter">
             <div class="filter-container">
-                <button class="filter-main-btn" id="openFilterModal">
-                    <i class="fas fa-filter"></i>
-                    Filter Products
-                </button>
-            </div>
-        </div>
-
-        <!-- Filter Modal -->
-        <div class="filter-modal" id="filterModal">
-            <div class="filter-modal-content">
-                <div class="filter-modal-header">
-                    <h2>Filter by Category</h2>
-                    <button class="close-filter-modal" id="closeFilterModal">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="filter-categories-grid">
-                    <button class="filter-category-btn active" data-category="all">All Collections</button>
-                    <button class="filter-category-btn" data-category="sherwani-farma">Sherwani: Farma</button>
-                    <button class="filter-category-btn" data-category="sherwani-velvet">Sherwani: Velvet</button>
-                    <button class="filter-category-btn" data-category="sherwani-georgette">Sherwani: Georgette</button>
-                    <button class="filter-category-btn" data-category="sherwani-diverse-fabric">Sherwani: Diverse
-                        Fabric</button>
-                    <button class="filter-category-btn" data-category="open-indo-georgette">Open Indo:
-                        Georgette</button>
-                    <button class="filter-category-btn" data-category="open-indo-diverse-fabric">Open Indo: Diverse
-                        Fabric</button>
-                    <button class="filter-category-btn" data-category="semi-indo-diverse-fabric">Semi Indo: Diverse
-                        Fabric</button>
-                    <button class="filter-category-btn" data-category="indo-western-diverse-fabric">Indo Western:
-                        Diverse Fabric</button>
-                    <button class="filter-category-btn" data-category="jodhpuri-diverse-fabric">Jodhpuri</button>
-                    <button class="filter-category-btn" data-category="kurta-jacket">Kurta Jacket</button>
-                    <button class="filter-category-btn" data-category="kurta-chicken">Kurta: Chicken</button>
-                    <button class="filter-category-btn" data-category="kurta-pintex">Kurta: Pintex</button>
-                </div>
+                <button class="filter-category-btn active" data-category="all">All Collections</button>
+                <button class="filter-category-btn" data-category="sherwani-farma">Sherwani: Farma</button>
+                <button class="filter-category-btn" data-category="sherwani-velvet">Sherwani: Velvet</button>
+                <button class="filter-category-btn" data-category="sherwani-georgette">Sherwani: Georgette</button>
+                <button class="filter-category-btn" data-category="sherwani-diverse-fabric">Sherwani: Diverse
+                    Fabric</button>
+                <button class="filter-category-btn" data-category="open-indo-georgette">Open Indo: Georgette</button>
+                <button class="filter-category-btn" data-category="open-indo-diverse-fabric">Open Indo: Diverse
+                    Fabric</button>
+                <button class="filter-category-btn" data-category="semi-indo-diverse-fabric">Semi Indo: Diverse
+                    Fabric</button>
+                <button class="filter-category-btn" data-category="indo-western-diverse-fabric">Indo Western: Diverse
+                    Fabric</button>
+                <button class="filter-category-btn" data-category="jodhpuri-diverse-fabric">Jodhpuri</button>
+                <button class="filter-category-btn" data-category="kurta-jacket">Kurta Jacket</button>
+                <button class="filter-category-btn" data-category="kurta-chicken">Kurta: Chicken</button>
+                <button class="filter-category-btn" data-category="kurta-pintex">Kurta: Pintex</button>
             </div>
         </div>
 
@@ -722,9 +634,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25001\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25001\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25001\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25001\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25001\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25001\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -745,9 +660,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25002\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25002\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25002\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25002\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25002\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25002\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -768,9 +686,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25003\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25003\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25003\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25003\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25003\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25003\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -791,9 +712,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25004\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25004\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25004\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25004\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25004\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25004\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -814,9 +738,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25009\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25009\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25009\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25009\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25009\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25009\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -837,9 +764,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25019\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25019\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25019\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25019\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25019\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25019\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -860,9 +790,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25020\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25020\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25020\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25020\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25020\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25020\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -883,9 +816,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25025\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25025\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25025\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                    <img src="Collections\Sherwani\SH25025\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25025\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async">
+                                    <img src="Collections\Sherwani\SH25025\Zoom.jpg" alt="Royal Farma Sherwani Zoom" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -906,9 +842,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25040\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25040\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25040\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25040\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25040\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25040\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -929,9 +868,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25041\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25041\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25041\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25041\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25041\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25041\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -952,9 +894,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25042\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25042\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25042\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25042\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25042\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25042\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -975,9 +920,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25043\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25043\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25043\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25043\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25043\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25043\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -998,9 +946,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25044\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25044\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25044\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25044\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25044\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25044\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1021,9 +972,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25045\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25045\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <!-- <img src="Collections\Sherwani\SH25045\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                    <img src="Collections\Sherwani\SH25045\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25045\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25045\Zoom.jpg" alt="Royal Farma Sherwani Zoom" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1044,9 +998,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25046\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25046\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25046\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25046\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25046\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25046\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1077,9 +1034,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25016\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25016\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25016\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25016\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25016\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25016\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1100,9 +1060,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25017\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25017\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25017\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25017\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25017\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25017\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1133,9 +1096,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25018\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25018\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25018\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25018\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25018\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25018\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1156,9 +1122,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25024\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25024\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25024\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25024\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25024\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25024\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1189,9 +1158,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25005\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25005\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25005\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25005\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25005\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25005\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1212,9 +1184,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25006\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25006\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25006\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25006\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25006\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25006\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1235,9 +1210,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25007\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25007\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25007\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25007\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25007\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25007\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1258,9 +1236,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25008\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25008\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25008\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25008\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25008\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25008\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1281,9 +1262,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25010\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25010\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25010\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25010\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25010\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25010\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1304,9 +1288,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25011\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25011\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25011\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25011\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25011\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25011\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1327,9 +1314,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25012\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25012\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25012\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25012\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25012\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25012\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1350,9 +1340,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25013\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25013\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25013\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25013\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25013\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25013\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1373,9 +1366,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25014\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25014\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25014\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25014\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25014\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25014\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1396,9 +1392,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25015\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25015\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25015\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25015\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25015\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25015\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1419,9 +1418,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25021\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25021\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25021\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25021\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25021\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25021\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1442,9 +1444,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25022\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25022\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25022\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25022\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25022\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25022\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1465,9 +1470,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25023\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25023\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25023\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25023\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25023\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25023\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1488,9 +1496,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25026\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25026\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25026\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25026\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25026\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25026\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1511,9 +1522,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25029\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25029\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25029\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25029\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25029\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25029\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1534,9 +1548,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25030\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25030\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <!-- <img src="Collections\Sherwani\SH25030\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                    <img src="Collections\Sherwani\SH25030\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25030\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25030\Zoom.jpg" alt="Royal Farma Sherwani Zoom" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1557,9 +1574,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25032\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25032\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25032\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25032\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25032\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25032\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1580,9 +1600,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25033\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25033\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25033\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25033\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25033\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25033\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1603,9 +1626,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25034\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25034\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25034\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25034\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25034\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25034\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1626,9 +1652,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25035\Front.jpg" alt="Royal Farma Sherwani">
-                                    <!-- <img src="Collections\Sherwani\SH25035\Back.jpg" alt="Royal Farma Sherwani Back"> -->
-                                    <img src="Collections\Sherwani\SH25035\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25035\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25035\Back.jpg" alt="Royal Farma Sherwani Back" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Sherwani\SH25035\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1649,9 +1678,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25036\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25036\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <!-- <img src="Collections\Sherwani\SH25036\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                    <img src="Collections\Sherwani\SH25036\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25036\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25036\Zoom.jpg" alt="Royal Farma Sherwani Zoom" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1672,9 +1704,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25039\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25039\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25039\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25039\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25039\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25039\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1706,11 +1741,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25001\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25001\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25001\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1732,11 +1767,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25002\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25002\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25002\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1758,11 +1793,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25003\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25003\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25003\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1784,11 +1819,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25004\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25004\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25004\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1810,11 +1845,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25005\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25005\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25005\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1836,11 +1871,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25006\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25006\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25006\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1862,11 +1897,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25007\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25007\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25007\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1888,10 +1923,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25017\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25017\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25017\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1913,10 +1948,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25018\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25018\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25018\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1937,9 +1972,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25031\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25031\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <img src="Collections\Sherwani\SH25031\Zoom.jpg" alt="Royal Farma Sherwani Zoom">
+                                    <img src="Collections\Sherwani\SH25031\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25031\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25031\Zoom.jpg" alt="Royal Farma Sherwani Zoom"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1960,9 +1998,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Sherwani\SH25038\Front.jpg" alt="Royal Farma Sherwani">
-                                    <img src="Collections\Sherwani\SH25038\Back.jpg" alt="Royal Farma Sherwani Back">
-                                    <!-- <img src="Collections\Sherwani\SH25038\Zoom.jpg" alt="Royal Farma Sherwani Zoom"> -->
+                                    <img src="Collections\Sherwani\SH25038\Front.jpg" alt="Royal Farma Sherwani"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Sherwani\SH25038\Back.jpg" alt="Royal Farma Sherwani Back"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Sherwani\SH25038\Zoom.jpg" alt="Royal Farma Sherwani Zoom" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -1994,11 +2035,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25009\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25009\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25009\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2020,11 +2061,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25010\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25010\Back.jpg"
-                                        alt="Royal Farma Sherwani Back">
+                                        alt="Royal Farma Sherwani Back" loading="lazy" decoding="async">
                                     <img src="Collections\Open Indo Western\OI25010\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2046,10 +2087,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25011\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25011\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25011\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2071,10 +2112,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25012\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25012\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25012\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2096,10 +2137,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25013\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25013\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25013\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2121,10 +2162,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25014\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25014\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25014\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2146,10 +2187,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25015\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25015\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25015\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2171,10 +2212,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Open Indo Western\OI25016\Front.jpg"
-                                        alt="Royal Farma Sherwani">
+                                        alt="Royal Farma Sherwani" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Open Indo Western\OI25016\Back.jpg" alt="Royal Farma Sherwani Back"> -->
                                     <img src="Collections\Open Indo Western\OI25016\Zoom.jpg"
-                                        alt="Royal Farma Sherwani Zoom">
+                                        alt="Royal Farma Sherwani Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2206,9 +2247,9 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Semi Indo Western\SI25001\Front.jpg"
-                                        alt="Semi Indo Diverse Fabric">
+                                        alt="Semi Indo Diverse Fabric" loading="lazy" decoding="async">
                                     <img src="Collections\Semi Indo Western\SI25001\Back.jpg"
-                                        alt="Semi Indo Diverse Fabric Back">
+                                        alt="Semi Indo Diverse Fabric Back" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2240,10 +2281,10 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Indo Western\IW25001\Front.jpg"
-                                        alt="Indo Western Diverse Fabric">
+                                        alt="Indo Western Diverse Fabric" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Indo Western\IW25001\Back.jpg" alt="Indo Western Diverse Fabric Back"> -->
                                     <img src="Collections\Indo Western\IW25001\Zoom.jpg"
-                                        alt="Indo Western Diverse Fabric Zoom">
+                                        alt="Indo Western Diverse Fabric Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2265,7 +2306,7 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Indo Western\IW25002\Front.jpg"
-                                        alt="Indo Western Diverse Fabric">
+                                        alt="Indo Western Diverse Fabric" loading="lazy" decoding="async">
                                     <!-- <img src="Collections\Indo Western\IW25002\Back.jpg" alt="Indo Western Diverse Fabric Back"> -->
                                     <!-- <img src="Collections\Indo Western\IW25002\Zoom.jpg" alt="Indo Western Diverse Fabric Zoom">
                                 </div> -->
@@ -2290,11 +2331,11 @@
                                 </div>
                                 <div class="slider">
                                     <img src="Collections\Indo Western\IW25003\Front.jpg"
-                                        alt="Indo Western Diverse Fabric">
+                                        alt="Indo Western Diverse Fabric" loading="lazy" decoding="async">
                                     <img src="Collections\Indo Western\IW25003\Back.jpg"
-                                        alt="Indo Western Diverse Fabric Back">
+                                        alt="Indo Western Diverse Fabric Back" loading="lazy" decoding="async">
                                     <img src="Collections\Indo Western\IW25003\Zoom.jpg"
-                                        alt="Indo Western Diverse Fabric Zoom">
+                                        alt="Indo Western Diverse Fabric Zoom" loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2325,8 +2366,10 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\jodhpuri\JP25001\Front.jpg" alt="Jodhpuri Diverse Fabric">
-                                    <img src="Collections\jodhpuri\JP25001\Zoom.jpg" alt="Jodhpuri Diverse Fabric Back">
+                                    <img src="Collections\jodhpuri\JP25001\Front.jpg" alt="Jodhpuri Diverse Fabric"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\jodhpuri\JP25001\Zoom.jpg" alt="Jodhpuri Diverse Fabric Back"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2347,8 +2390,10 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\jodhpuri\JP25002\Front.jpg" alt="Jodhpuri Diverse Fabric">
-                                    <!-- <img src="Collections\jodhpuri\JP25002\Zoom.jpg" alt="Jodhpuri Diverse Fabric Back"> -->
+                                    <img src="Collections\jodhpuri\JP25002\Front.jpg" alt="Jodhpuri Diverse Fabric"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\jodhpuri\JP25002\Zoom.jpg" alt="Jodhpuri Diverse Fabric Back" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2369,8 +2414,10 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\jodhpuri\JP25003\Front.jpg" alt="Jodhpuri Diverse Fabric">
-                                    <!-- <img src="Collections\jodhpuri\JP25003\Zoom.jpg" alt="Jodhpuri Diverse Fabric Back"> -->
+                                    <img src="Collections\jodhpuri\JP25003\Front.jpg" alt="Jodhpuri Diverse Fabric"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\jodhpuri\JP25003\Zoom.jpg" alt="Jodhpuri Diverse Fabric Back" loading="lazy"
+         decoding="async"> -->
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2401,9 +2448,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Kurta Jacket\KJ25001\Front.jpg" alt="Chicken Fabric Kurta">
-                                    <img src="Collections\Kurta Jacket\KJ25001\Zoom.jpg" alt="Chicken Fabric Kurta">
-                                    <img src="Collections\Kurta Jacket\KJ25001\Back.jpg" alt="Chicken Fabric Kurta">
+                                    <img src="Collections\Kurta Jacket\KJ25001\Front.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Kurta Jacket\KJ25001\Zoom.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Kurta Jacket\KJ25001\Back.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2424,9 +2474,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Kurta Jacket\KJ25002\Front.jpg" alt="Chicken Fabric Kurta">
-                                    <!-- <img src="Collections\Kurta Jacket\KJ25002\Zoom.jpg" alt="Chicken Fabric Kurta"> -->
-                                    <img src="Collections\Kurta Jacket\KJ25002\Back.jpg" alt="Chicken Fabric Kurta">
+                                    <img src="Collections\Kurta Jacket\KJ25002\Front.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
+                                    <!-- <img src="Collections\Kurta Jacket\KJ25002\Zoom.jpg" alt="Chicken Fabric Kurta" loading="lazy"
+         decoding="async"> -->
+                                    <img src="Collections\Kurta Jacket\KJ25002\Back.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2457,7 +2510,8 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Kurta\Chicken\CK25001\Front.jpg" alt="Chicken Fabric Kurta">
+                                    <img src="Collections\Kurta\Chicken\CK25001\Front.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2478,7 +2532,8 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Kurta\Chicken\CK25002\Front.jpg" alt="Chicken Fabric Kurta">
+                                    <img src="Collections\Kurta\Chicken\CK25002\Front.jpg" alt="Chicken Fabric Kurta"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2487,7 +2542,8 @@
                                     <div class="slider-dot"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> loading="lazy"
+                        decoding="async"
                     </div>
                 </div>
             </section>
@@ -2509,9 +2565,12 @@
                                     </div>
                                 </div>
                                 <div class="slider">
-                                    <img src="Collections\Kurta\Pintex\PK25001\Front.jpg" alt="Pintex Kurta">
-                                    <img src="Collections\Kurta\Pintex\PK25001\Back.jpg" alt="Pintex Kurta Back">
-                                    <img src="Collections\Kurta\Pintex\PK25001\Zoom.jpg" alt="Pintex Kurta Variation">
+                                    <img src="Collections\Kurta\Pintex\PK25001\Front.jpg" alt="Pintex Kurta"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Kurta\Pintex\PK25001\Back.jpg" alt="Pintex Kurta Back"
+                                        loading="lazy" decoding="async">
+                                    <img src="Collections\Kurta\Pintex\PK25001\Zoom.jpg" alt="Pintex Kurta Variation"
+                                        loading="lazy" decoding="async">
                                 </div>
                                 <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
                                 <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
@@ -2581,49 +2640,63 @@
     </div>
 
     <script>
+        // Image Loading Optimization
+        function optimizeImageLoading() {
+            const sliders = document.querySelectorAll('.slider-container');
+
+            sliders.forEach(container => {
+                const slider = container.querySelector('.slider');
+                const images = slider.querySelectorAll('img');
+
+                container.classList.add('loading');
+
+                let loadedCount = 0;
+                const totalImages = images.length;
+
+                images.forEach(img => {
+                    const originalSrc = img.src;
+
+                    const preloadImg = new Image();
+
+                    preloadImg.onload = function () {
+                        loadedCount++;
+                        img.classList.add('loaded');
+
+                        if (loadedCount === totalImages) {
+                            container.classList.remove('loading');
+                        }
+                    };
+
+                    preloadImg.onerror = function () {
+                        loadedCount++;
+                        if (loadedCount === totalImages) {
+                            container.classList.remove('loading');
+                        }
+                    };
+
+                    preloadImg.src = originalSrc;
+                });
+            });
+        }
+
         // Store current slide for each slider
         const sliderStates = new Map();
 
         document.addEventListener('DOMContentLoaded', function () {
-            // Filter Modal Elements
-            const filterModal = document.getElementById('filterModal');
-            const openFilterModal = document.getElementById('openFilterModal');
-            const closeFilterModal = document.getElementById('closeFilterModal');
+            optimizeImageLoading();
+
+            // Filter functionality
             const filterCategoryBtns = document.querySelectorAll('.filter-category-btn');
             const categories = document.querySelectorAll('.category');
-
-            // Open Filter Modal
-            openFilterModal.addEventListener('click', function () {
-                filterModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-
-            // Close Filter Modal
-            closeFilterModal.addEventListener('click', function () {
-                filterModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-
-            // Close modal when clicking outside
-            filterModal.addEventListener('click', function (e) {
-                if (e.target === filterModal) {
-                    filterModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
 
             // Filter category selection
             filterCategoryBtns.forEach(button => {
                 button.addEventListener('click', function () {
                     const category = this.getAttribute('data-category');
 
-                    // Update active button in modal
+                    // Update active button
                     filterCategoryBtns.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-
-                    // Close modal
-                    filterModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
 
                     // Apply filter
                     applyCategoryFilter(category);
