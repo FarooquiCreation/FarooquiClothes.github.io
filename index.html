@@ -708,7 +708,7 @@
 
 <body>
     <div class="container">
-        <!-- Authentication Modal -->
+        <!-- Authentication Modal
         <div class="auth-modal" id="authModal">
             <div class="auth-container">
                 <div class="auth-logo">FAROOQUI</div>
@@ -738,7 +738,7 @@
                     Select user type and enter corresponding password
                 </div>
             </div>
-        </div>
+        </div> -->
         <header>
             <div class="logo">FAROOQUI</div>
             <div class="tagline">A choice that reflects true distinction</div>
@@ -3209,95 +3209,95 @@
     </div>
 
     <script>
-        // User credentials - same as your original
-        const VALID_CREDENTIALS = [
-            { username: "owner", password: "farooqui2025" },
-            { username: "client", password: "client" },
-            { username: "guest", password: "guest" }
-        ];
+        // // User credentials - same as your original
+        // const VALID_CREDENTIALS = [
+        //     { username: "owner", password: "farooqui2025" },
+        //     { username: "client", password: "client" },
+        //     { username: "guest", password: "guest" }
+        // ];
 
-        // Password toggle functionality
-        document.getElementById('togglePassword').addEventListener('click', function () {
-            const passwordInput = document.getElementById('password');
-            const icon = this.querySelector('i');
+        // // Password toggle functionality
+        // document.getElementById('togglePassword').addEventListener('click', function () {
+        //     const passwordInput = document.getElementById('password');
+        //     const icon = this.querySelector('i');
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            }
-        });
+        //     if (passwordInput.type === 'password') {
+        //         passwordInput.type = 'text';
+        //         icon.classList.remove('fa-eye');
+        //         icon.classList.add('fa-eye-slash');
+        //     } else {
+        //         passwordInput.type = 'password';
+        //         icon.classList.remove('fa-eye-slash');
+        //         icon.classList.add('fa-eye');
+        //     }
+        // });
 
-        // Login form submission
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        // // Login form submission
+        // document.getElementById('loginForm').addEventListener('submit', function (e) {
+        //     e.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorElement = document.getElementById('authError');
+        //     const username = document.getElementById('username').value;
+        //     const password = document.getElementById('password').value;
+        //     const errorElement = document.getElementById('authError');
 
-            // Check if username is selected
-            if (!username) {
-                errorElement.textContent = "Please select user type from the list";
-                errorElement.style.display = 'block';
-                return;
-            }
+        //     // Check if username is selected
+        //     if (!username) {
+        //         errorElement.textContent = "Please select user type from the list";
+        //         errorElement.style.display = 'block';
+        //         return;
+        //     }
 
-            // Check credentials
-            const isValid = VALID_CREDENTIALS.some(cred =>
-                cred.username === username && cred.password === password
-            );
+        //     // Check credentials
+        //     const isValid = VALID_CREDENTIALS.some(cred =>
+        //         cred.username === username && cred.password === password
+        //     );
 
-            if (isValid) {
-                // Successful login
-                document.getElementById('authModal').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
+        //     if (isValid) {
+        //         // Successful login
+        //         document.getElementById('authModal').style.display = 'none';
+        //         document.getElementById('mainContent').style.display = 'block';
 
-                // Store authentication status in sessionStorage
-                sessionStorage.setItem('authenticated', 'true');
-                sessionStorage.setItem('userType', username);
-            } else {
-                // Failed login
-                errorElement.textContent = "Invalid password. Please try again.";
-                errorElement.style.display = 'block';
-                document.getElementById('password').value = '';
-                document.getElementById('password').focus();
-            }
-        });
+        //         // Store authentication status in sessionStorage
+        //         sessionStorage.setItem('authenticated', 'true');
+        //         sessionStorage.setItem('userType', username);
+        //     } else {
+        //         // Failed login
+        //         errorElement.textContent = "Invalid password. Please try again.";
+        //         errorElement.style.display = 'block';
+        //         document.getElementById('password').value = '';
+        //         document.getElementById('password').focus();
+        //     }
+        // });
 
-        // Check if already authenticated
-        document.addEventListener('DOMContentLoaded', function () {
-            if (sessionStorage.getItem('authenticated') === 'true') {
-                document.getElementById('authModal').style.display = 'none';
-                document.getElementById('mainContent').style.display = 'block';
-            } else {
-                document.getElementById('authModal').style.display = 'flex';
-                document.getElementById('mainContent').style.display = 'none';
-            }
-        });
+        // // Check if already authenticated
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     if (sessionStorage.getItem('authenticated') === 'true') {
+        //         document.getElementById('authModal').style.display = 'none';
+        //         document.getElementById('mainContent').style.display = 'block';
+        //     } else {
+        //         document.getElementById('authModal').style.display = 'flex';
+        //         document.getElementById('mainContent').style.display = 'none';
+        //     }
+        // });
 
-        // Auto-focus on password when username is selected
-        document.getElementById('username').addEventListener('change', function () {
-            if (this.value) {
-                document.getElementById('password').focus();
-            }
-        });
+        // // Auto-focus on password when username is selected
+        // document.getElementById('username').addEventListener('change', function () {
+        //     if (this.value) {
+        //         document.getElementById('password').focus();
+        //     }
+        // });
 
-        // Enter key support - submit form when Enter is pressed in password field
-        document.getElementById('password').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
-            }
-        });
+        // // Enter key support - submit form when Enter is pressed in password field
+        // document.getElementById('password').addEventListener('keypress', function (e) {
+        //     if (e.key === 'Enter') {
+        //         document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+        //     }
+        // });
 
-        // Clear error when user starts typing
-        document.getElementById('password').addEventListener('input', function () {
-            document.getElementById('authError').style.display = 'none';
-        });
+        // // Clear error when user starts typing
+        // document.getElementById('password').addEventListener('input', function () {
+        //     document.getElementById('authError').style.display = 'none';
+        // });
         // Image Loading Optimization
         function optimizeImageLoading() {
             const sliders = document.querySelectorAll('.slider-container');
